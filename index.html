@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Habang Buhay May?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="container-body">
+      <h1 class="title">Habang Buhay May?</h1>
+      <div class="form">
+        <input type="text" id="main-input" />
+        <button type="button" id="submit-btn">Submit</button>
+        <button type="button" id="reset-btn">Reset</button>
+      </div>
+      <h5>Result:</h5>
+      <div class="result" id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    let mainInput = document.querySelector("#main-input");
+    let submitBtn = document.querySelector("#submit-btn");
+    let resetBtn = document.querySelector("#reset-btn");
+    let result = document.querySelector("#result"); 
+
+    let p = document.createElement("p");
+
+    const arr = ["pagsubok", "pagbangon", "pagibig"];
+
+    const checkIfExist = (arrVal, inputVal) => {
+      return arrVal.includes(inputVal.toLowerCase());
+    };
+
+    const submitFunc = () => {
+      let mainVal = mainInput.value.trim().toLowerCase();
+      let resultVal;
+
+      if (checkIfExist(arr, mainVal)) {
+        resultVal = mainVal;
+      } else {
+        resultVal = arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      p.innerText = resultVal;
+      result.appendChild(p);
+    };
+
+    const resetFunc = () => {
+      mainInput.value = "";
+      p.innerText = "";
+    };
+
+    submitBtn.addEventListener("click", submitFunc);
+    resetBtn.addEventListener("click", resetFunc);
+  </script>
+</body>
+</html>
