@@ -30,18 +30,15 @@
 
     const arr = ["pagsubok", "pagbangon", "pagibig"];
 
-    const checkIfExist = (arrVal, inputVal) => {
-      return arrVal.includes(inputVal.toLowerCase());
-    };
 
     const submitFunc = () => {
       let mainVal = mainInput.value.trim().toLowerCase();
       let resultVal;
 
-      if (checkIfExist(arr, mainVal)) {
-        resultVal = mainVal;
-      } else {
+      if (mainVal) {
         resultVal = arr[Math.floor(Math.random() * arr.length)];
+      } else {
+        resultVal = "Empty field is not allowed"
       }
 
       p.innerText = resultVal;
